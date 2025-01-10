@@ -4,32 +4,32 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; /* Это нужно для выравнивания элементов по вертикали */
+    flex-direction: column; /* Выравниваем элементы по вертикали */
     height: 100vh;
     background-color: black;
     color: white;
-    font-family: 'Pacifico', cursive; /* Устанавливаем красивый шрифт */
+    font-family: 'Pacifico', cursive;
     font-size: 2rem;
-    position: relative; /* Чтобы контейнер сердечек не накладывался на текст */
+    position: relative;
 }
 
 .center-text {
     text-align: center;
-    font-size: 4rem;
+    font-size: 4rem;  /* Базовый размер текста */
     letter-spacing: 2px;
-    text-decoration: none; /* Убираем стандартное подчеркивание у ссылки */
+    text-decoration: none;
     color: white;
-    transition: 0.3s; /* Анимация при наведении */
-    z-index: 2; /* Устанавливаем надпись над сердечками */
+    transition: 0.3s;
+    z-index: 2;  /* Над сердечками */
 }
 
 .center-text:hover {
-    color: #ff69b4; /* Розовый цвет при наведении */
-    transform: scale(1.1); /* Увеличение при наведении */
+    color: #ff69b4;  /* Розовый цвет при наведении */
+    transform: scale(1.1);  /* Увеличение при наведении */
 }
 
 .heart-container {
-    position: absolute; /* Абсолютное позиционирование для сердечек */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -76,5 +76,18 @@ body {
     100% {
         transform: translateY(-50vh) rotate(45deg);
         opacity: 0;
+    }
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .center-text {
+        font-size: 3rem;  /* Уменьшаем размер шрифта для планшетов */
+    }
+}
+
+@media (max-width: 480px) {
+    .center-text {
+        font-size: 2rem;  /* Уменьшаем размер шрифта для мобильных */
     }
 }
