@@ -1,0 +1,104 @@
+/* Общие стили для страницы */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start; /* Контент по горизонтали в центре */
+    align-items: center; /* Центрируем по вертикали */
+    flex-direction: column;
+    height: 100vh; /* Высота на 100% экрана */
+    background-color: black;
+    color: white;
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
+    position: relative;
+    overflow-y: auto; /* Добавлено для прокрутки */
+    text-align: center;
+}
+
+/* Центральный текст */
+.center-text {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+    z-index: 2;
+    margin-top: 20px;
+}
+
+/* Эффект на hover для текста */
+.center-text:hover {
+    color: #ff69b4;
+    transform: scale(1.1);
+}
+
+/* Стрелочка */
+.arrow-down {
+    font-size: 3rem;
+    color: white;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+/* Эффект на hover для стрелочки */
+.arrow-down:hover {
+    transform: translateY(5px);
+}
+
+/* Блоки с контентом */
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Центрируем блоки */
+    margin-top: 40px; /* Увеличиваем расстояние между блоками */
+    border: 2px solid #ff69b4;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    margin-bottom: 40px; /* Увеличиваем отступ снизу */
+}
+
+/* Текстовая часть блока */
+.text-box {
+    max-width: 500px;
+    padding-right: 20px;
+}
+
+.date {
+    font-size: 2.5rem;
+    text-align: left;
+    font-weight: bold;
+    color: white;
+}
+
+.underline {
+    width: 100%;
+    height: 2px;
+    background-color: #ff69b4;
+    margin-top: 10px;
+}
+
+.story-text {
+    font-size: 1.5rem;
+    color: white;
+    margin-top: 20px;
+    line-height: 1.5;
+}
+
+/* Картинки */
+.image-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo {
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+}
