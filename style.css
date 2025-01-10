@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Это нужно для выравнивания элементов по вертикали */
+    height: 100vh;
+    background-color: black;
+    color: white;
+    font-family: 'Pacifico', cursive; /* Устанавливаем красивый шрифт */
+    font-size: 2rem;
+    position: relative; /* Чтобы контейнер сердечек не накладывался на текст */
+}
+
+.center-text {
+    text-align: center;
+    font-size: 4rem;
+    letter-spacing: 2px;
+    text-decoration: none; /* Убираем стандартное подчеркивание у ссылки */
+    color: white;
+    transition: 0.3s; /* Анимация при наведении */
+    z-index: 2; /* Устанавливаем надпись над сердечками */
+}
+
+.center-text:hover {
+    color: #ff69b4; /* Розовый цвет при наведении */
+    transform: scale(1.1); /* Увеличение при наведении */
+}
+
+.heart-container {
+    position: absolute; /* Абсолютное позиционирование для сердечек */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1; /* Под текстом */
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff69b4;
+    transform: rotate(45deg);
+    animation: moveUp 5s linear infinite;
+    opacity: 0.8;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff69b4;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: 10px;
+}
+
+@keyframes moveUp {
+    0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50vh) rotate(45deg);
+        opacity: 0;
+    }
+}
