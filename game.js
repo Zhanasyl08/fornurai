@@ -1,22 +1,18 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-canvas.width = 300;  // Уменьшаем ширину канваса для мобильных устройств
-canvas.height = 300; // Уменьшаем высоту канваса
-
-const tileSize = 25; // Увеличиваем размер плитки для змейки и пищи
+const tileSize = 25; // Размер плитки
 let snake = [{ x: 150, y: 150 }];
 let direction = { x: 0, y: 0 };
 let food = { x: getRandomTile(), y: getRandomTile() };
 let gameRunning = true;
-let score = 0; // Переменная для хранения очков
-let title = ''; // Переменная для хранения титула
+let score = 0;
+let title = '';
 
 // Загружаем изображение для головы змейки
 const headImage = new Image();
 headImage.src = 'images/gamephoto.jpg'; // Укажите путь к вашему изображению
 
-// Ожидаем, пока изображение загрузится
 headImage.onload = () => {
   console.log('Image loaded successfully');
 };
@@ -25,15 +21,18 @@ headImage.onerror = () => {
   console.error('Error loading image');
 };
 
+// Устанавливаем фиксированные размеры канваса
+canvas.width = 400;
+canvas.height = 400;
+
 function drawRect(x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, tileSize, tileSize);
 }
 
 function drawHead(x, y) {
-  // Проверяем, загрузилось ли изображение перед рисованием
   if (headImage.complete) {
-    ctx.drawImage(headImage, x, y, tileSize, tileSize); // Рисуем изображение вместо головы
+    ctx.drawImage(headImage, x, y, tileSize, tileSize);
   }
 }
 
@@ -47,8 +46,8 @@ function moveSnake() {
 
   if (head.x === food.x && head.y === food.y) {
     food = { x: getRandomTile(), y: getRandomTile() };
-    score++; // Увеличиваем количество очков
-    updateTitle(); // Обновляем титул в зависимости от очков
+    score++;
+    updateTitle();
   } else {
     snake.pop();
   }
@@ -70,7 +69,7 @@ function updateTitle() {
   } else if (score === 2) {
     title = 'Nurai pro max';
   } else if (score === 3) {
-    title = 'Nurai Angry;
+    title = 'Nurai Ultra Pro Max';
   } else if (score >= 4) {
     title = 'Nurai Godzilla';
   }
@@ -85,17 +84,23 @@ function drawGame() {
   }
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawRect(food.x, food.y, 'red');  // Рисуем пищу
+  drawRect(food.x, food.y, 'red');
 
   snake.forEach((segment, index) => {
     if (index === 0) {
-      drawHead(segment.x, segment.y);  // Рисуем голову змейки
+      drawHead(segment.x, segment.y);
     } else {
-      drawRect(segment.x, segment.y, 'white');  // Рисуем тело змейки
+      drawRect(segment.x, segment.y, 'green');
     }
   });
 
   moveSnake();
+
+  // Отображаем очки и титул
+  ctx.fillStyle = 'white';
+  ctx.font = '20px Impact';
+  ctx.fillText(`Score: ${score}`, 20, 30);
+  ctx.fillText(title, canvas.width / 2 - ctx.measureText(title).width / 2, 30);
 }
 
 function changeDirection(newDirection) {
@@ -107,7 +112,6 @@ function changeDirection(newDirection) {
   }
 }
 
-// Обработка нажатий клавиш
 document.addEventListener('keydown', event => {
   const keyMap = {
     ArrowUp: { x: 0, y: -tileSize },
@@ -120,11 +124,9 @@ document.addEventListener('keydown', event => {
   if (newDirection) changeDirection(newDirection);
 });
 
-// Обработка кликов по кнопкам
 document.getElementById('up').addEventListener('click', () => changeDirection({ x: 0, y: -tileSize }));
 document.getElementById('down').addEventListener('click', () => changeDirection({ x: 0, y: tileSize }));
 document.getElementById('left').addEventListener('click', () => changeDirection({ x: -tileSize, y: 0 }));
 document.getElementById('right').addEventListener('click', () => changeDirection({ x: tileSize, y: 0 }));
 
-// Увеличиваем интервал времени для замедления игры
-setInterval(drawGame, 150); // Измените значение 150 на 200, если хотите еще больше замедлить игру
+setInterval(drawGame, 150); // 150 ms для замедления игры
