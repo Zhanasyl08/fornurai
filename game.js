@@ -95,12 +95,6 @@ function drawGame() {
     }
   });
 
-  // Отображаем очки и титул
-  ctx.fillStyle = 'white';
-  ctx.font = '20px Arial';
-  ctx.fillText(`Score: ${score}`, 10, 30);
-  ctx.fillText(title, canvas.width / 2 - ctx.measureText(title).width / 2, 30);
-
   moveSnake();
 }
 
