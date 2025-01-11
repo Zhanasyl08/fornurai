@@ -9,42 +9,45 @@ body {
     color: #fb6161;
     font-family: Arial, sans-serif;
     text-align: center;
-  }
-  
-  h1 {
+}
+
+h1 {
     margin-bottom: 20px;
-  }
-  
-  canvas {
+}
+
+canvas {
     border: 2px solid #fb617d;
     background-color: #000;
-  }
-  
-  #controls {
+    width: 300px; /* Уменьшаем размер канваса */
+    height: 300px;
+}
+
+#controls {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-  }
-  
-  #controls button {
+    gap: 15px; /* Увеличиваем промежуток между кнопками */
+}
+
+#controls button {
     background-color: #fb6192;
     color: #282c34;
     border: none;
-    padding: 10px 20px;
-    font-size: 18px;
+    padding: 15px 25px; /* Увеличиваем размер кнопок */
+    font-size: 22px;
     cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  #controls button:active {
+    border-radius: 8px;
+}
+
+#controls button:active {
     background-color: #f12197e3;
-  }
-  
-  #controls div {
+}
+
+#controls div {
     display: flex;
-    gap: 10px;
-  }
+    gap: 15px;
+}
+
   
   
