@@ -130,3 +130,4 @@ document.getElementById('left').addEventListener('click', () => changeDirection(
 document.getElementById('right').addEventListener('click', () => changeDirection({ x: tileSize, y: 0 }));
 
 setInterval(drawGame, 150); // 150 ms для замедления игры
+
