@@ -12,7 +12,7 @@ let gameRunning = true;
 
 // Загружаем изображение для головы змейки
 const headImage = new Image();
-headImage.src = 'C:/Users/HP/Desktop/gamephoto.jpg'; // Укажите путь к вашему изображению
+headImage.src = './gamephoto.jpg'; // Укажите путь к вашему изображению
 
 // Ожидаем, пока изображение загрузится
 headImage.onload = () => {
