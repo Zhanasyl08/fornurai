@@ -70,7 +70,7 @@ function updateTitle() {
   } else if (score === 2) {
     title = 'Nurai pro max';
   } else if (score === 3) {
-    title = 'Nurai Ultra Pro Max';
+    title = 'Nurai Angry;
   } else if (score >= 4) {
     title = 'Nurai Godzilla';
   }
@@ -91,7 +91,7 @@ function drawGame() {
     if (index === 0) {
       drawHead(segment.x, segment.y);  // Рисуем голову змейки
     } else {
-      drawRect(segment.x, segment.y, 'green');  // Рисуем тело змейки
+      drawRect(segment.x, segment.y, 'white');  // Рисуем тело змейки
     }
   });
 
