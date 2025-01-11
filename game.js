@@ -1,14 +1,16 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-canvas.width = 400;
-canvas.height = 400;
+canvas.width = 300;  // Уменьшаем ширину канваса для мобильных устройств
+canvas.height = 300; // Уменьшаем высоту канваса
 
-const tileSize = 20;
-let snake = [{ x: 200, y: 200 }];
+const tileSize = 25; // Увеличиваем размер плитки для змейки и пищи
+let snake = [{ x: 150, y: 150 }];
 let direction = { x: 0, y: 0 };
 let food = { x: getRandomTile(), y: getRandomTile() };
 let gameRunning = true;
+let score = 0; // Переменная для хранения очков
+let title = ''; // Переменная для хранения титула
 
 // Загружаем изображение для головы змейки
 const headImage = new Image();
@@ -45,6 +47,8 @@ function moveSnake() {
 
   if (head.x === food.x && head.y === food.y) {
     food = { x: getRandomTile(), y: getRandomTile() };
+    score++; // Увеличиваем количество очков
+    updateTitle(); // Обновляем титул в зависимости от очков
   } else {
     snake.pop();
   }
@@ -60,6 +64,18 @@ function moveSnake() {
   }
 }
 
+function updateTitle() {
+  if (score === 1) {
+    title = 'Nurai pro';
+  } else if (score === 2) {
+    title = 'Nurai pro max';
+  } else if (score === 3) {
+    title = 'Nurai Ultra Pro Max';
+  } else if (score >= 4) {
+    title = 'Nurai Godzilla';
+  }
+}
+
 function drawGame() {
   if (!gameRunning) {
     ctx.fillStyle = 'red';
@@ -69,16 +85,21 @@ function drawGame() {
   }
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawRect(food.x, food.y, 'red');
+  drawRect(food.x, food.y, 'red');  // Рисуем пищу
 
-  // Рисуем голову змейки как изображение, а остальные сегменты как прямоугольники
   snake.forEach((segment, index) => {
     if (index === 0) {
-      drawHead(segment.x, segment.y); // Голова
+      drawHead(segment.x, segment.y);  // Рисуем голову змейки
     } else {
-      drawRect(segment.x, segment.y, 'green'); // Остальные сегменты
+      drawRect(segment.x, segment.y, 'green');  // Рисуем тело змейки
     }
   });
+
+  // Отображаем очки и титул
+  ctx.fillStyle = 'white';
+  ctx.font = '20px Arial';
+  ctx.fillText(`Score: ${score}`, 10, 30);
+  ctx.fillText(title, canvas.width / 2 - ctx.measureText(title).width / 2, 30);
 
   moveSnake();
 }
