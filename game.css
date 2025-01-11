@@ -18,6 +18,9 @@ body {
   canvas {
     border: 2px solid #fb617d;
     background-color: #000;
+    width: 80%; /* Уменьшаем ширину канваса */
+    max-width: 300px; /* Ограничиваем максимальную ширину */
+    height: auto; /* Автоматическая высота для пропорциональности */
   }
   
   #controls {
@@ -32,7 +35,7 @@ body {
     background-color: #fb6192;
     color: #282c34;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 20px;
     font-size: 18px;
     cursor: pointer;
     border-radius: 5px;
@@ -47,27 +50,7 @@ body {
     gap: 10px;
   }
   
-  /* Стили для текста за канвасом */
-  #scoreboard {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 18px;
-    font-family: 'Impact', sans-serif;
-    color: white;
-    z-index: 10;
-  }
-  
-  #title {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 24px;
-    font-family: 'Impact', sans-serif;
-    color: white;
-    z-index: 10;
-  }
+  /* Убираем дополнительные стили, так как канвас теперь масштабируемый */
   
   
   
